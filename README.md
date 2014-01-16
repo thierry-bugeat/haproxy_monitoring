@@ -10,7 +10,7 @@ The failover doesn't works if Haproxy service is down.
 With the scripts below, we will monitor Haproxy service 
 and take over virtual IP if Haproxy master is down.
 
-
+==================
 
 Follow these changes for step 5 & 6 :
 
@@ -75,10 +75,9 @@ Open file "haproxy_monitor.conf" and edit the following variables to match your 
 	AWSSecretKey	: 
 
 	SSH_CONFIG_1	: Ssh hostname to use to contact Haproxy node 1. 
-                      Create file "/root/.ssh/config"
 			  (haproxy01 in this example)
 
-	SSH_CONFIG_2	: Ssh hostname to use to contact Haproxy node 2. Create file "/root/.ssh/config"
+	SSH_CONFIG_2	: Ssh hostname to use to contact Haproxy node 2. 
 			  (haproxy02 in this example)
 
 Configure haproxy_monitor.sh to be started by cron at boot and start haproxy_monitor.sh: 
