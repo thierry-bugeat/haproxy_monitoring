@@ -15,6 +15,7 @@ and take over virtual IP if Haproxy master is down.
 Follow these changes for step 5 & 6 :
 
 5a. Configure SSH connexions between Haproxy nodes
+--------------------------------------------------
 
 Copy your pem files on each Haproxy node (Directory : "/root/.ssh/")
 
@@ -45,6 +46,7 @@ Try the SSH connection from Haproxy node 2 to node 1
 
 
 5b. Download haproxy_monitor.zip archive and configure haproxy_monitor.conf file.
+---------------------------------------------------------------------------------
 
 Connect to Haproxy Node #1. Change to the root user, navigate to the root user's home
 directory, download and unzip the archive "haproxy_monitor.zip". Make scripts
