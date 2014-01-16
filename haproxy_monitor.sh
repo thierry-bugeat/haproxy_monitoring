@@ -18,8 +18,8 @@ echo `date` "IP node 2 = $IP_NODE_2"
 
 while [ . ]; do
 
-	HAPROXY_PID_NODE_1=`ssh $SSH_TIMEOUT $SSH_CONFIG_1 "ps cax | grep haproxy" | awk '{print $1;}'`
-	HAPROXY_PID_NODE_2=`ssh $SSH_TIMEOUT $SSH_CONFIG_2 "ps cax | grep haproxy" | awk '{print $1;}'`
+	HAPROXY_PID_NODE_1=`ssh $SSH_TIMEOUT $SSH_CONFIG_1 "ps cax | grep haproxy$" | awk '{print $1;}'`
+	HAPROXY_PID_NODE_2=`ssh $SSH_TIMEOUT $SSH_CONFIG_2 "ps cax | grep haproxy$" | awk '{print $1;}'`
 
 	echo `date` "Haproxy PID node 1 = $HAPROXY_PID_NODE_1"
 	echo `date` "Haproxy PID node 2 = $HAPROXY_PID_NODE_2"
