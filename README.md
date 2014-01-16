@@ -75,11 +75,11 @@ Open file "haproxy_monitor.conf" and edit the following variables to match your 
                       (Directory : "/root/")
 	AWSSecretKey	: 
 
-	SSH_CONFIG_1	: Ssh hostname to use to contact Haproxy node 1. 
-			  (haproxy01 in this example)
+	SSH_CONFIG_1	: Ssh hostname to use to contact Haproxy node 1.
+	                  (haproxy01 in this example)
 
 	SSH_CONFIG_2	: Ssh hostname to use to contact Haproxy node 2. 
-			  (haproxy02 in this example)
+	                  (haproxy02 in this example)
 
 Configure haproxy_monitor.sh to be started by cron at boot and start haproxy_monitor.sh: 
 
