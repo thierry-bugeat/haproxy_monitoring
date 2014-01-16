@@ -5,8 +5,8 @@ Haproxy monitoring on Amazon EC2 instances & virtual IP failover.
 
 Source: http://aws.amazon.com/articles/2127188135977316
 
-In this article, the failover works only if the server is down.
-The failover doesn't works if Haproxy service is down.
+In this article, the failover works only if the server is down.  
+The failover doesn't works if Haproxy service is down.  
 With the scripts below, we will monitor Haproxy service 
 and take over virtual IP if Haproxy master is down.
 
