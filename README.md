@@ -8,8 +8,8 @@ Source: http://aws.amazon.com/articles/2127188135977316
 In this article, the failover works only if the server is down.  
 The failover doesn't works if Haproxy service is down.  
 
-Here, we will monitor Haproxy service 
-and take over virtual IP if Haproxy master is down.
+**Here, we will monitor Haproxy service 
+and take over virtual IP if Haproxy master is down.**
 
 Follow these changes for step 5 & 6 :
 
