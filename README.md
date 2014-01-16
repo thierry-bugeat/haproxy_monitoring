@@ -54,7 +54,7 @@ executables with the following commands:
 	[ec2-user@ip-10-0-0-11 ~]$ sudo -s
 	[root@ip-10-0-0-11 ec2-user]# cd /root
 	[root@ip-10-0-0-11 ~]# wget http://thierry.bugeat.free.fr/misc/haproxy_monitor.zip
-	[root@ip-10-0-0-11 ~]# unzip haproxy_monitor.zip
+	[root@ip-10-0-0-11 ~]# unzip -j haproxy_monitor.zip
 	[root@ip-10-0-0-11 ~]# chmod a+x haproxy_monitor.sh
 	[root@ip-10-0-0-11 ~]# chmod a+x reassign_vip.sh
 
