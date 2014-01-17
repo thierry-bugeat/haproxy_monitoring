@@ -93,8 +93,8 @@ while [ . ]; do
         IFS=$OLDIFS
 
         echo `date` "ENI eth0 vip = $ENI_NODE_0"
-            echo `date` "ENI eth0 node 1 = $ENI_NODE_1"
-            echo `date` "ENI eth0 node 2 = $ENI_NODE_2"
+        echo `date` "ENI eth0 node 1 = $ENI_NODE_1"
+        echo `date` "ENI eth0 node 2 = $ENI_NODE_2"
 
         if [ "$ENI_NODE_0" == "$ENI_NODE_1" ]
         then
