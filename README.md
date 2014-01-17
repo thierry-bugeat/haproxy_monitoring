@@ -94,3 +94,46 @@ Verify that the script is running by viewing the log file:
 	[root@ip-10-0-0-11 ~]#
 
 Now connect to Haproxy Node #2 and issue the same commands as you did previously on Haproxy Node #1.
+
+
+
+6. Test Your Configuration
+--------------------------
+
+You are done! You may now test your configuration. Watch the haproxy_monitor.log 
+file on Haproxy Node #2 while you restart Haproxy Node #1 and observe the script 
+take over the VIP.
+
+Haproxy Node #2
+
+    [root@ip-10-0-0-12 ~]# tail -f /tmp/haproxy_monitor.log 
+    Fri Jan 17 10:22:47 UTC 2014 -- Starting Haproxy monitor
+    Fri Jan 17 10:22:47 UTC 2014 IP node 1 = 10.0.0.11
+    Fri Jan 17 10:22:47 UTC 2014 IP node 2 = 10.0.0.12
+
+Now stop Haproxy service on node 1 and observe logs on Haproxy node 2
+
+    Fri Jan 17 10:23:35 UTC 2014 [WARNING] Haproxy node 1 (10.0.0.11) is down.
+    Fri Jan 17 10:23:37 UTC 2014 ENI eth0 vip = eni-xxxxxxxx
+    Fri Jan 17 10:23:37 UTC 2014 ENI eth0 node 1 = eni-xxxxxxxx
+    Fri Jan 17 10:23:37 UTC 2014 ENI eth0 node 2 = eni-xxxxxxxx
+    Fri Jan 17 10:23:37 UTC 2014 Master server = 10.0.0.11
+    Fri Jan 17 10:23:37 UTC 2014 IP localhost = 10.0.0.12
+    Fri Jan 17 10:23:37 UTC 2014 I'm the slave server.
+    Fri Jan 17 10:23:37 UTC 2014 [WARNING] Haproxy on master server 10.0.0.11 is down !
+    Fri Jan 17 10:23:37 UTC 2014 [-------] Haproxy on slave server is up.
+    Fri Jan 17 10:23:37 UTC 2014
+    Fri Jan 17 10:23:37 UTC 2014 ########################
+    Fri Jan 17 10:23:37 UTC 2014 ### EXECUTE FAILOVER ###
+    Fri Jan 17 10:23:37 UTC 2014 ########################
+    Fri Jan 17 10:23:37 UTC 2014
+    Fri Jan 17 10:23:37 UTC 2014 Haproxy node IP = 10.0.0.12
+    Fri Jan 17 10:23:39 UTC 2014 Network interface ID = eni-xxxxxxxx
+    RETURN  true
+    Fri Jan 17 10:23:41 UTC 2014 Reassign virtual IP done.
+    Fri Jan 17 10:23:41 UTC 2014 Failover done.
+    Fri Jan 17 10:23:41 UTC 2014
+
+Now restart Haproxy on node 1. 
+
+    Fri Jan 17 10:32:38 UTC 2014 [NOTICE] Come back to stability. All is done.
