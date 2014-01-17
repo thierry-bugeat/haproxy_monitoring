@@ -112,12 +112,12 @@ while [ . ]; do
             HAPROXY_PID_SLAVE=""
         fi
 
-    # =============================
-    # --- I'm slave or master ? ---
-    # =============================
+        # =============================
+        # --- I'm slave or master ? ---
+        # =============================
 
-    IP_LOCALHOST=`/sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}' | sed 's/addr://'`	
-    echo `date` "Master $MASTER / Localhost $IP_LOCALHOST"
+        IP_LOCALHOST=`/sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}' | sed 's/addr://'`	
+        echo `date` "Master $MASTER / Localhost $IP_LOCALHOST"
 
         if [ "$MASTER" == "$IP_LOCALHOST" ]
         then
