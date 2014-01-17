@@ -8,6 +8,8 @@ source `pwd`/haproxy_monitor.conf
 FAILOVER_SCRIPT="reassign_vip.sh" # Script executed to reassign virtual ip.
 SSH_TIMEOUT="-o ConnectTimeout=1"
 
+SYSTEM_STABLE="yes"
+
 IP_NODE_1=`ssh $SSH_TIMEOUT $SSH_CONFIG_1 /sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}' | sed 's/addr://'`
 IP_NODE_2=`ssh $SSH_TIMEOUT $SSH_CONFIG_2 /sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}' | sed 's/addr://'`
 
@@ -21,12 +23,24 @@ while [ . ]; do
 	HAPROXY_PID_NODE_1=`ssh $SSH_TIMEOUT $SSH_CONFIG_1 "ps cax | grep haproxy$" | awk '{print $1;}'`
 	HAPROXY_PID_NODE_2=`ssh $SSH_TIMEOUT $SSH_CONFIG_2 "ps cax | grep haproxy$" | awk '{print $1;}'`
 
+    # ==============================
+    # --- Come back to stability ---
+    # ==============================
+
+    if [ "$SYSTEM_STABLE" == "no" ] && [ "$HAPROXY_PID_NODE_1" != "" ] && [ "$HAPROXY_PID_NODE_2" != "" ]
+    then
+        SYSTEM_STABLE="yes"
+        echo `date` "[NOTICE] Come back to stability. All is done."
+    fi
+
 	# ========================================
 	# --- All Haproxy instances are down ? ---
 	# ========================================
 
 	if [ "$HAPROXY_PID_NODE_1" == "" ] && [ "$HAPROXY_PID_NODE_2" == "" ]
         then
+                SYSTEM_STABLE="no"
+
                 echo `date` "                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                 "
                 echo `date` "### CRITICAL ### !!! ALL HAPROXY INSTANCES ARE DOWN !!! ### CRITICAL ###"
                 echo `date` "                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                 "
@@ -37,6 +51,8 @@ while [ . ]; do
 
 	elif [ "$HAPROXY_PID_NODE_1" == "" ] || [ "$HAPROXY_PID_NODE_2" == "" ]
 	then
+
+        SYSTEM_STABLE="no"
 
 		if [ "$HAPROXY_PID_NODE_1" == "" ]
 		then
@@ -96,22 +112,18 @@ while [ . ]; do
 			HAPROXY_PID_SLAVE=""
 		fi
 
-		echo `date` "Master server = $MASTER"
-
 		# =============================
 		# --- I'm slave or master ? ---
 		# =============================
 
 		IP_LOCALHOST=`/sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}' | sed 's/addr://'`	
-		echo `date` "IP localhost = $IP_LOCALHOST"
+		echo `date` "Master $MASTER / Localhost $IP_LOCALHOST"
 
 		if [ "$MASTER" == "$IP_LOCALHOST" ]
 		then
 			MY_STATUS="master"
-			echo `date` "I'm the master server."
 		else
 			MY_STATUS="slave"
-			echo `date` "I'm the slave server."
 		fi
 
 		# ==========================
