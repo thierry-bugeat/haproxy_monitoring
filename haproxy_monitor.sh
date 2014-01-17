@@ -21,9 +21,6 @@ while [ . ]; do
 	HAPROXY_PID_NODE_1=`ssh $SSH_TIMEOUT $SSH_CONFIG_1 "ps cax | grep haproxy$" | awk '{print $1;}'`
 	HAPROXY_PID_NODE_2=`ssh $SSH_TIMEOUT $SSH_CONFIG_2 "ps cax | grep haproxy$" | awk '{print $1;}'`
 
-	echo `date` "Haproxy PID node 1 = $HAPROXY_PID_NODE_1"
-	echo `date` "Haproxy PID node 2 = $HAPROXY_PID_NODE_2"
-
 	# ========================================
 	# --- All Haproxy instances are down ? ---
 	# ========================================
@@ -40,16 +37,15 @@ while [ . ]; do
 
 	elif [ "$HAPROXY_PID_NODE_1" == "" ] || [ "$HAPROXY_PID_NODE_2" == "" ]
 	then
-		echo `date` "[WARNING] One Haproxy instance is down !"
 
 		if [ "$HAPROXY_PID_NODE_1" == "" ]
 		then
-			echo `date` "$IP_NODE_1 haproxy[]: WARNING Service node 1 down"
+			echo `date` "[WARNING] Haproxy node 1 ($IP_NODE_1) is down."
 		fi
 
 		if [ "$HAPROXY_PID_NODE_2" == "" ]
 		then
-			echo `date` "$IP_NODE_2 haproxy[]: WARNING Service node 2 down"
+			echo `date` "[WARNING] Haproxy node 2 ($IP_NODE_2) is down."
 		fi
 
 		# ==================================
@@ -128,7 +124,10 @@ while [ . ]; do
 
         if [ "$MY_STATUS" == "master" ]
         then
-            # NOTHING TO DO HERE
+            echo `date` "I'm master. Nothing to do."
+        elif [ "$MY_STATUS" == "slave" ] && [ "$HAPROXY_PID_MASTER" != "" ]
+        then
+            echo `date` "I'm slave & master is up. Nothing to do."
 		elif [ "$MY_STATUS" == "slave" ] && [ "$HAPROXY_PID_MASTER" == "" ] && [ "$HAPROXY_PID_SLAVE" != "" ]
 		then
 			echo `date` "[WARNING] Haproxy on master server $MASTER is down !"
