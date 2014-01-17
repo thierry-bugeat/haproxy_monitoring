@@ -38,12 +38,12 @@ while [ . ]; do
     # ========================================
 
     if [ "$HAPROXY_PID_NODE_1" == "" ] && [ "$HAPROXY_PID_NODE_2" == "" ]
-        then
-                SYSTEM_STABLE="no"
+    then
+        SYSTEM_STABLE="no"
 
-                echo `date` "                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                 "
-                echo `date` "### CRITICAL ### !!! ALL HAPROXY INSTANCES ARE DOWN !!! ### CRITICAL ###"
-                echo `date` "                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                 "
+        echo `date` "                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                 "
+        echo `date` "### CRITICAL ### !!! ALL HAPROXY INSTANCES ARE DOWN !!! ### CRITICAL ###"
+        echo `date` "                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                 "
 
     # ======================================
     # --- One Haproxy instance is down ? ---
