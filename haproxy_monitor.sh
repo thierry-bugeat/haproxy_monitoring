@@ -126,7 +126,10 @@ while [ . ]; do
 		# 2) Slave Haproxy is up
 		# 3) This server is the slave
 
-		if [ "$HAPROXY_PID_MASTER" == "" ] && [ "$HAPROXY_PID_SLAVE" != "" ] && [ "$MY_STATUS" == "slave" ]
+        if [ "$MY_STATUS" == "master" ]
+        then
+            # NOTHING TO DO HERE
+		elif [ "$MY_STATUS" == "slave" ] && [ "$HAPROXY_PID_MASTER" == "" ] && [ "$HAPROXY_PID_SLAVE" != "" ]
 		then
 			echo `date` "[WARNING] Haproxy on master server $MASTER is down !"
 			echo `date` "[-------] Haproxy on slave server is up."
@@ -140,9 +143,6 @@ while [ . ]; do
 
 			echo `date` "Failover done."
 			echo `date`
-		elif [ "$HAPROXY_PID_MASTER" != "" ] && [ "$HAPROXY_PID_SLAVE" == "" ]
-		then
-			echo `date` "[WARNING] Haproxy on slave server is down!"
 		else
 			echo `date` "### CRITICAL ###"
 		fi
