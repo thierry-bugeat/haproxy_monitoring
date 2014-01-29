@@ -137,3 +137,16 @@ Now stop Haproxy service on node 1 and observe logs on Haproxy node 2
 Now restart Haproxy on node 1. 
 
     Fri Jan 17 10:32:38 UTC 2014 [NOTICE] Come back to stability. All is done.
+
+
+
+7. Howto install Amazon EC2 API tools on Debian 7.3 instance
+------------------------------------------------------------
+
+	[ec2-user@ip-10-0-0-11 ~]$ sudo -s
+	[root@ip-10-0-0-11 ec2-user]# cd /root
+    [root@ip-10-0-0-11 ~] wget http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip
+    [root@ip-10-0-0-11 ~] unzip ec2-api-tools.zip
+    [root@ip-10-0-0-11 ~] apt-get install openjdk-7-jre
+    [root@ip-10-0-0-11 ~] export EC2_HOME=/root/ec2-api-tools-1.6.12.2/
+    [root@ip-10-0-0-11 ~] export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
