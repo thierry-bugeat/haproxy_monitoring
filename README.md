@@ -152,3 +152,8 @@ Quick example
     [root@ip-10-0-0-11 ~] apt-get install openjdk-7-jre
     [root@ip-10-0-0-11 ~] export EC2_HOME=/opt/aws/
     [root@ip-10-0-0-11 ~] export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
+
+Export variables at instance startup
+
+    [root@ip-10-0-0-11 ~] echo "export EC2_HOME=/opt/aws/" >> /etc/profile.d/aws.sh
+    [root@ip-10-0-0-11 ~] echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/" >> /etc/profile.d/aws.sh
