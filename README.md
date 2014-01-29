@@ -140,13 +140,15 @@ Now restart Haproxy on node 1.
 
 
 
-7. Howto install Amazon EC2 API tools on Debian 7.3 instance
-------------------------------------------------------------
+7. How to install Amazon EC2 API tools on Debian Wheezy 7.3 instance
+--------------------------------------------------------------------
+
+Quick example  
 
 	[ec2-user@ip-10-0-0-11 ~]$ sudo -s
 	[root@ip-10-0-0-11 ec2-user]# cd /root
     [root@ip-10-0-0-11 ~] wget http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip
-    [root@ip-10-0-0-11 ~] unzip ec2-api-tools.zip
+    [root@ip-10-0-0-11 ~] unzip ec2-api-tools.zip -d /opt && mv /opt/ec2-api-tools* /opt/aws
     [root@ip-10-0-0-11 ~] apt-get install openjdk-7-jre
-    [root@ip-10-0-0-11 ~] export EC2_HOME=/root/ec2-api-tools-1.6.12.2/
+    [root@ip-10-0-0-11 ~] export EC2_HOME=/opt/aws/
     [root@ip-10-0-0-11 ~] export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
