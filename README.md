@@ -69,7 +69,8 @@ Open file "haproxy_monitor.conf" and edit the following variables to match your 
                       For region value see : 
                       http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region
 
-	AWSAccessKeyId	: See https://console.aws.amazon.com/iam/home?#security_credential
+	AWSAccessKeyId	: See https://console.aws.amazon.com/iam/home?#users
+                      Find your user name...
                       click [Create New Access Key]
                       Download "rootkey.csv" file and upload it on each Haproxy node. 
                       (Directory : "/root/")
