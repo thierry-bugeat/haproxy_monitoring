@@ -74,6 +74,9 @@ Open file "haproxy_monitor.conf" and edit the following variables to match your 
                       click [Create New Access Key]
                       Download "rootkey.csv" file and upload it on each Haproxy node. 
                       (Directory : "/root/")
+                      "rootkey.csv" content should look like...
+                      AWSAccessKeyId=XXXXXXXXXXXXXX
+                      AWSSecretKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	AWSSecretKey	: 
 
 	SSH_CONFIG_1	: Ssh hostname to use to contact Haproxy node 1.
