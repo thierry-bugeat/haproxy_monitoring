@@ -145,8 +145,8 @@ Now restart Haproxy on node 1.
 
 Quick example  
 
-	[ec2-user@ip-10-0-0-11 ~]$ sudo -s
-	[root@ip-10-0-0-11 ec2-user]# cd /root
+	[admin@ip-10-0-0-11 ~]$ sudo -s
+	[root@ip-10-0-0-11 admin]# cd /root
     [root@ip-10-0-0-11 ~] wget http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip
     [root@ip-10-0-0-11 ~] unzip ec2-api-tools.zip -d /opt && mv /opt/ec2-api-tools* /opt/aws
     [root@ip-10-0-0-11 ~] apt-get install openjdk-7-jre
