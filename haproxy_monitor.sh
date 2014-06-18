@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script will monitor Haproxy nodes and take over a Virtual IP (VIP)
 
 source `pwd`/haproxy_monitor.conf
