@@ -25,6 +25,6 @@ echo `date` "Network interface ID = $NETWORK_INTERFACE_ID"
 # --- Reassign Virtual IP to this server ---
 # ==========================================
 
-ec2-assign-private-ip-addresses -n $NETWORK_INTERFACE_ID --secondary-private-ip-address $VIP --allow-reassignment --aws-access-key $AWSAccessKeyId --aws-secret-key $AWSSecretKey --region $REGION
+/opt/aws/bin/ec2-assign-private-ip-addresses -n $NETWORK_INTERFACE_ID --secondary-private-ip-address $VIP --allow-reassignment --aws-access-key $AWSAccessKeyId --aws-secret-key $AWSSecretKey --region $REGION
 
 echo `date` "Reassign virtual IP done."
