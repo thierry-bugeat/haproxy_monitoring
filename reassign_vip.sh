@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script reassign Amazon Elastic IP (Virtual IP) to this server.
 
 # =================
