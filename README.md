@@ -69,10 +69,14 @@ Open file "haproxy_monitor.conf" and edit the following variables to match your 
                       For region value see : 
                       http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region
 
-	AWSAccessKeyId	: See https://console.aws.amazon.com/iam/home?#security_credential
+	AWSAccessKeyId	: See https://console.aws.amazon.com/iam/home?#users
+                      Find your user name...
                       click [Create New Access Key]
                       Download "rootkey.csv" file and upload it on each Haproxy node. 
                       (Directory : "/root/")
+                      "rootkey.csv" content should look like...
+                      AWSAccessKeyId=XXXXXXXXXXXXXX
+                      AWSSecretKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	AWSSecretKey	: 
 
 	SSH_CONFIG_1	: Ssh hostname to use to contact Haproxy node 1.
@@ -145,8 +149,8 @@ Now restart Haproxy on node 1.
 
 Quick example  
 
-	[ec2-user@ip-10-0-0-11 ~]$ sudo -s
-	[root@ip-10-0-0-11 ec2-user]# cd /root
+	[admin@ip-10-0-0-11 ~]$ sudo -s
+	[root@ip-10-0-0-11 admin]# cd /root
     [root@ip-10-0-0-11 ~] wget http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip
     [root@ip-10-0-0-11 ~] unzip ec2-api-tools.zip -d /opt && mv /opt/ec2-api-tools* /opt/aws
     [root@ip-10-0-0-11 ~] apt-get install openjdk-7-jre
